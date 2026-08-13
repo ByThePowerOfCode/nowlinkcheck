@@ -5,6 +5,8 @@ check_links.py
 1. Scans the ServiceNowDocs "australia" branch (checked out by the GitHub
    Action into ./servicenowdocs) for every link that starts with:
        https://support.servicenow.com/kb?sys_kb_id
+   ...and records every file each link was found in (a link can appear in
+   more than one doc page).
 2. Visits each unique link and reads the HTML <title> tag.
 3. Buckets each link into one of two groups:
        - "Knowledge Article View - Now Support Portal"  -> the generic
@@ -14,7 +16,9 @@ check_links.py
        - Everything else -> the portal returned a real, specific article
          title, meaning the link is genuinely public and working.
 4. Writes:
-       docs/data/latest.json   -> full detail for the most recent run
+       docs/data/latest.json   -> full detail for the most recent run,
+                                    including which file(s) each link
+                                    was found in
        docs/data/history.json  -> one summary entry per calendar month,
                                     used to draw the month-over-month chart
 """
@@ -58,11 +62,16 @@ TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 
 
 # ---------------------------------------------------------------------------
-# Step 1: find every matching link in the docs repo
+# Step 1: find every matching link in the docs repo, and every file it's in
 # ---------------------------------------------------------------------------
 
 def find_links(repo_path):
-    links = set()
+    """
+    Returns a dict mapping each unique link -> sorted list of file paths
+    (relative to repo_path) where that link was found.
+    """
+    links_to_files = {}
+
     for root, dirs, files in os.walk(repo_path):
         # skip git internals
         if ".git" in dirs:
@@ -74,9 +83,20 @@ def find_links(repo_path):
                     content = f.read()
             except (OSError, UnicodeDecodeError):
                 continue
-            for match in LINK_PATTERN.findall(content):
-                links.add(match)
-    return sorted(links)
+
+            matches = LINK_PATTERN.findall(content)
+            if not matches:
+                continue
+
+            # store the path relative to the docs repo root, so it reads
+            # like "markdown/some-page.md" instead of a full local path
+            rel_path = os.path.relpath(filepath, repo_path)
+
+            for link in matches:
+                links_to_files.setdefault(link, set()).add(rel_path)
+
+    # convert sets to sorted lists for clean, deterministic JSON output
+    return {link: sorted(paths) for link, paths in links_to_files.items()}
 
 
 # ---------------------------------------------------------------------------
@@ -106,10 +126,13 @@ def check_link(url):
 # Step 3: run the checks
 # ---------------------------------------------------------------------------
 
-def run_checks(links):
+def run_checks(links_to_files):
     results = []
+    links = sorted(links_to_files.keys())
+
     for i, url in enumerate(links, start=1):
         title, status_code, error = check_link(url)
+        found_in = links_to_files[url]
 
         if error is not None:
             category = "other"
@@ -127,10 +150,12 @@ def run_checks(links):
                 "title": display_title,
                 "status_code": status_code,
                 "category": category,
+                "found_in": found_in,          # list of file paths in ServiceNowDocs
             }
         )
 
-        print(f"[{i}/{len(links)}] {url} -> {display_title!r} ({category})")
+        source_note = found_in[0] if len(found_in) == 1 else f"{len(found_in)} files"
+        print(f"[{i}/{len(links)}] {url} -> {display_title!r} ({category}) [{source_note}]")
 
         if i < len(links):
             time.sleep(DELAY_BETWEEN_REQUESTS)
@@ -209,10 +234,10 @@ def main():
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     print(f"Scanning {DOCS_REPO_PATH} for matching links...")
-    links = find_links(DOCS_REPO_PATH)
-    print(f"Found {len(links)} unique link(s) matching the target pattern.")
+    links_to_files = find_links(DOCS_REPO_PATH)
+    print(f"Found {len(links_to_files)} unique link(s) matching the target pattern.")
 
-    results = run_checks(links)
+    results = run_checks(links_to_files)
     summary = write_latest(results, checked_at)
     upsert_history(summary, checked_at)
 
