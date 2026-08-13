@@ -1,0 +1,54 @@
+name: Check ServiceNow KB Links
+
+# WHEN THIS RUNS
+on:
+  schedule:
+    # 06:00 UTC on the 1st of every month (one data point per month)
+    - cron: '0 6 1 * *'
+  workflow_dispatch: {}   # lets you click "Run workflow" in the Actions tab any time to test it
+
+# The job needs permission to push the updated data files back to this repo
+permissions:
+  contents: write
+
+concurrency:
+  group: kb-link-check
+  cancel-in-progress: false
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository (the tracker/site)
+        uses: actions/checkout@v4
+
+      - name: Check out ServiceNowDocs (australia branch)
+        uses: actions/checkout@v4
+        with:
+          repository: ServiceNow/ServiceNowDocs
+          ref: australia
+          path: servicenowdocs
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run the link checker
+        run: python scripts/check_links.py
+
+      - name: Commit and push updated results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update KB link check results ($(date -u +'%Y-%m-%d'))"
+            git push
+          fi

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ServiceNow Docs — KB Link Health Tracker</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --green: #1a7f37;
+    --red: #cf222e;
+    --gray-bg: #f6f8fa;
+    --border: #d0d7de;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #1f2328;
+  }
+  header {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; }
+  header p { margin: 0; color: #57606a; font-size: 14px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 32px 64px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: var(--gray-bg);
+  }
+  .card .label { font-size: 13px; color: #57606a; margin-bottom: 6px; }
+  .card .value { font-size: 32px; font-weight: 700; }
+  .card.total .value { color: #1f2328; }
+  .card.match .value { color: var(--red); }
+  .card.other .value { color: var(--green); }
+  .card .sub { font-size: 12px; color: #57606a; margin-top: 4px; }
+
+  section { margin-bottom: 40px; }
+  h2 { font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+
+  .chart-wrap { max-width: 900px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { background: var(--gray-bg); position: sticky; top: 0; }
+  td.url { word-break: break-all; max-width: 380px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag.match { background: #ffebe9; color: var(--red); }
+  .tag.other { background: #dafbe1; color: var(--green); }
+
+  .filter-bar { margin-bottom: 12px; font-size: 13px; }
+  .filter-bar button {
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 13px;
+  }
+  .filter-bar button.active { background: #1f2328; color: #fff; border-color: #1f2328; }
+
+  .empty-state { color: #57606a; font-size: 14px; padding: 24px; text-align: center; }
+  footer { color: #57606a; font-size: 12px; text-align: center; padding: 24px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ServiceNow Docs — KB Link Health Tracker</h1>
+  <p>Checks every <code>support.servicenow.com/kb?sys_kb_id=…</code> link found in the
+     <a href="https://github.com/ServiceNow/ServiceNowDocs/tree/australia" target="_blank" rel="noopener noreferrer">ServiceNowDocs (australia branch)</a>
+     and records whether it loads a real article or just the generic portal shell.</p>
+</header>
+
+<main>
+  <div class="cards">
+    <div class="card total">
+      <div class="label">Total links checked</div>
+      <div class="value" id="stat-total">–</div>
+      <div class="sub" id="stat-date">Last checked: –</div>
+    </div>
+    <div class="card match">
+      <div class="label">Title = "Knowledge Article View - Now Support Portal"</div>
+      <div class="value" id="stat-match">–</div>
+      <div class="sub">Content likely did not load (needs login, retired, or missing)</div>
+    </div>
+    <div class="card other">
+      <div class="label">All other titles</div>
+      <div class="value" id="stat-other">–</div>
+      <div class="sub">Loaded a real, specific article title</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Month-over-month trend</h2>
+    <div class="chart-wrap">
+      <canvas id="historyChart" height="120"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2>Link detail (most recent run)</h2>
+    <div class="filter-bar">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="knowledge_article_view">Generic title only</button>
+      <button data-filter="other">Other titles only</button>
+    </div>
+    <div id="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:45%">Link</th>
+            <th>Status</th>
+            <th style="width:35%">Returned Title</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody id="links-body"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="empty-state" style="display:none;">
+      No data yet — this page updates automatically after the first GitHub Actions run.
+    </div>
+  </section>
+</main>
+
+<footer>
+  Data refreshed automatically by a scheduled GitHub Action. Source data:
+  <a href="./data/latest.json">latest.json</a> · <a href="./data/history.json">history.json</a>
+</footer>
+
+<script>
+async function loadJSON(path) {
+  try {
+    const res = await fetch(path, { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) {
+    return null;
+  }
+}
+
+function formatDate(iso) {
+  if (!iso) return "–";
+  const d = new Date(iso);
+  return d.toLocaleString(undefined, {
+    year: "numeric", month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit"
+  });
+}
+
+let allLinks = [];
+
+function renderTable(filter) {
+  const tbody = document.getElementById("links-body");
+  const emptyState = document.getElementById("empty-state");
+  tbody.innerHTML = "";
+
+  const rows = filter === "all" ? allLinks : allLinks.filter(l => l.category === filter);
+
+  if (rows.length === 0) {
+    emptyState.style.display = "block";
+    return;
+  }
+  emptyState.style.display = "none";
+
+  for (const link of rows) {
+    const tr = document.createElement("tr");
+    const tagClass = link.category === "knowledge_article_view" ? "match" : "other";
+    const tagLabel = link.category === "knowledge_article_view" ? "Generic title" : "Other";
+    tr.innerHTML = `
+      <td class="url"><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.url}</a></td>
+      <td>${link.status_code ?? "—"}</td>
+      <td>${link.title ?? ""}</td>
+      <td><span class="tag ${tagClass}">${tagLabel}</span></td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+async function init() {
+  const latest = await loadJSON("./data/latest.json");
+  const history = await loadJSON("./data/history.json");
+
+  if (latest) {
+    document.getElementById("stat-total").textContent = latest.summary.total ?? 0;
+    document.getElementById("stat-match").textContent = latest.summary.knowledge_article_view_count ?? 0;
+    document.getElementById("stat-other").textContent = latest.summary.other_count ?? 0;
+    document.getElementById("stat-date").textContent = "Last checked: " + formatDate(latest.last_checked);
+    allLinks = latest.links || [];
+  }
+  renderTable("all");
+
+  document.querySelectorAll(".filter-bar button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter-bar button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderTable(btn.dataset.filter);
+    });
+  });
+
+  if (history && history.history && history.history.length > 0) {
+    const labels = history.history.map(h => h.month);
+    const matchData = history.history.map(h => h.knowledge_article_view_count);
+    const otherData = history.history.map(h => h.other_count);
+
+    new Chart(document.getElementById("historyChart"), {
+      type: "line",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: '"Knowledge Article View" (generic)',
+            data: matchData,
+            borderColor: "#cf222e",
+            backgroundColor: "rgba(207,34,46,0.1)",
+            tension: 0.2,
+            fill: true,
+          },
+          {
+            label: "Other (real titles)",
+            data: otherData,
+            borderColor: "#1a7f37",
+            backgroundColor: "rgba(26,127,55,0.1)",
+            tension: 0.2,
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: "index", intersect: false },
+        scales: {
+          y: { beginAtZero: true, ticks: { precision: 0 } },
+        },
+      },
+    });
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>
