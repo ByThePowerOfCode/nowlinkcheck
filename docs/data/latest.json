@@ -1,5 +1,5 @@
 {
-  "last_checked": "2026-08-13T16:39:03Z",
+  "last_checked": "2026-08-13T16:56:33Z",
   "summary": {
     "total": 25,
     "knowledge_article_view_count": 25,
@@ -10,151 +10,268 @@
       "url": "https://support.servicenow.com/kb?sys_kb_id=0d2295ee4721e2102c31b98a436d43ec&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/security-management/threat-intelligence-security-center/tisc-kb-articles.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=1df9d8bc93a82ad07c79b36d6cba1058&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-asset-management/procurement/consume-local-asset-stock.md",
+        "markdown/it-service-management/procurement/consume-local-asset-stock.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=1f87321d93507290d9743f986cba10c1&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-asset-management/saas-license-management/integrate-with-slack.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=39f4e5cb47a9f250b6d8aa25126d43a0&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/acct-lifecycle-events/account-lifecycle-setup-health-defn.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=43cccf6483ca9a10cdbbc430feaad3d4&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/source-to-pay-operations/supplier-lifecycle-operations/remove-unique-constraint.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=4fd37dbe4797f2102c31b98a436d430d&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-operations-management/discovery/create-hybrid-application-service-maps.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=53f0493293922e5cd9743f986cba10a0&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/environmental-social-governance/usage-of-emission-factors-in-a-calculated-metric-definition.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=6460540047ee7a9048cb2920326d4302&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/delta-washingtondc-australia/australia-washingtondc-generativeaicontroller-release-notes.md",
+        "markdown/delta-xanadu-australia/australia-xanadu-generativeaicontroller-release-notes.md",
+        "markdown/delta-yokohama-australia/australia-yokohama-generativeaicontroller-release-notes.md",
+        "markdown/delta-zurich-australia/australia-zurich-generativeaicontroller-release-notes.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=6778a81293aa2e54f538fb2d6cba10c1&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/integrate-applications/credits.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=68859e2147a0ae5448cb2920326d43fc&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/integrate-applications/managing-data-fabric-tables-zcc.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=6ec3c13d93da3610080af35d6cba106e&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-asset-management/software-asset-management/microsoft-sql-server-enterprise-edition-licensing-modal.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=6fb0278147ab3a1027a3fac8736d4348&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-operations-management/event-management/configure-nnmi-connector.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=77fb7ba7871736142d5cbbb5cebb35e9&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/field-service-management/field-service-scheduling/configure-travel-time-estimates-with-beans-ai.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=8652717893a8ba94f538fb2d6cba1078&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/delta-washingtondc-australia/australia-washingtondc-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-xanadu-australia/australia-xanadu-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-yokohama-australia/australia-yokohama-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-zurich-australia/australia-zurich-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/release-notes/release-notes/secops-sem-rn.md",
+        "markdown/release-notes/upgrade-and-migration-tasks.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=99f441a747d6365077748d01426d433a&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/telecom-media-technology/now-assist-for-telecom-media-and-technology/now-assist-squad-resource-identifier.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=ace969cb47158f9811eaf24c736d435a&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/governance-risk-compliance/policy-and-compliance-management/enable-personal-auth-connection-credential-alias.md",
+        "markdown/governance-risk-compliance/policy-and-compliance-management/personal-auth-and-document-access-policy-authoring.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=bd1205e7973e2e50f03d739c1253af2a&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-service-management/digital-end-user-experience-dex/download-desktop-experience.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=c5700bf647dd9250f64de825126d43b0&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/servicenow-platform/service-graph-connectors/cmdb-aws-classes.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=d5a3f9a693b3aa18d9743f986cba1094&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/intelligent-experiences/servicenow-lens/servicenow-lens-features.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=d67d3e71475d7a90f64de825126d4326&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/order-management/common_browser_issues_while_using_logik_io.md",
+        "markdown/order-management/common_salesforce_integration_issues.md",
+        "markdown/order-management/cpq-authenticating-api-calls.md",
+        "markdown/order-management/cpq-config-converse.md",
+        "markdown/order-management/cpq-cosmo-smartpredict.md",
+        "markdown/order-management/cpq-logik-io-scripting-language-reference.md",
+        "markdown/order-management/cpq-multi-language-translation.md",
+        "markdown/order-management/cpq-nested-bundling-in-salesforce-cpq.md",
+        "markdown/order-management/cpq-request-provisioning-of-an-sfdc-org-with-a-servicenow-cpq-environment.md",
+        "markdown/order-management/cpq-transaction-converse.md",
+        "markdown/order-management/cpq-user-access-control-ref.md",
+        "markdown/order-management/cpq-using-uam.md",
+        "markdown/order-management/cpq-webhooks.md",
+        "markdown/order-management/deployments_page.md",
+        "markdown/order-management/enable-solution-configuration.md",
+        "markdown/order-management/granting_user_access_in_logik_io.md",
+        "markdown/order-management/installation-and-setup-guide-for-environments-linked-to-salesforce-org.md",
+        "markdown/order-management/installing-the-salesforce-transaction-manager-integration-package-extension.md",
+        "markdown/order-management/library_functions.md",
+        "markdown/order-management/logik_admin_user_access_control.md",
+        "markdown/order-management/logik_io-salesforce_managed_packages.md",
+        "markdown/order-management/picklist-extension-pricing-scripts.md",
+        "markdown/order-management/please_share_your_feedback_on_admin_assist_responses.md",
+        "markdown/order-management/product_picker_bulk_actions.md",
+        "markdown/order-management/reconnect-logik-after-refreshing-the-salesforce-org.md",
+        "markdown/order-management/refreshing_a_logik_connected_salesforce_org.md",
+        "markdown/order-management/rules-enrichments-debugging_in_logik_io.md",
+        "markdown/order-management/setup_logik_io_configuration_for_salesforce_rlm.md",
+        "markdown/order-management/solution-configuration-setup.md",
+        "markdown/order-management/solution-configurations.md",
+        "markdown/order-management/troubleshooting.md",
+        "markdown/order-management/use_case_embed_logik_io_ui_in_an_html_page.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=e59ab0ec4746dad077748d01426d43f2&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/it-asset-management/software-asset-management/sam-workspace.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=e77c760797ecba9024a7739c1253af4f&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/platform-security/enable-impersonation-tracking-audit-logs.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=ec531aab47a48794b6d8aa25126d4322&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/customer-service-management/now-assist-for-csm/analyze-sentiments-in-now-assist-for-csm.md",
+        "markdown/customer-service-management/now-assist-for-csm/sentiment-analysis-interaction.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=ef0c61718348c3d0cdbbc430feaad32e&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/security-management/threat-intelligence-security-center/tisc-zero-day-vuln-scenario.md"
+      ]
     },
     {
       "url": "https://support.servicenow.com/kb?sys_kb_id=ffed91cd93ff2690f538fb2d6cba1047&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
-      "category": "knowledge_article_view"
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/field-service-management/customizations.md"
+      ]
     }
   ]
 }
