@@ -1,8 +1,8 @@
 {
-  "last_checked": "2026-08-13T16:56:33Z",
+  "last_checked": "2026-09-01T10:56:55Z",
   "summary": {
-    "total": 25,
-    "knowledge_article_view_count": 25,
+    "total": 26,
+    "knowledge_article_view_count": 26,
     "other_count": 0
   },
   "links": [
@@ -101,6 +101,15 @@
       ]
     },
     {
+      "url": "https://support.servicenow.com/kb?sys_kb_id=696e678cc37d8fd4a9ea601bb0013170&id=kb_article_view",
+      "title": "Knowledge Article View - Now Support Portal",
+      "status_code": 200,
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/telecom-media-technology/now-assist-for-telecom-media-and-technology/now-assist-tmt-touchpoint-meeting-scheduler.md"
+      ]
+    },
+    {
       "url": "https://support.servicenow.com/kb?sys_kb_id=6ec3c13d93da3610080af35d6cba106e&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
@@ -135,9 +144,13 @@
       "found_in": [
         "markdown/delta-washingtondc-australia/australia-washingtondc-unifiedsecurityexposuremanagement-release-notes.md",
         "markdown/delta-xanadu-australia/australia-xanadu-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-xanadu-australia/australia-xanadu-unifiedsecurityexposuremanagementusem-release-notes.md",
         "markdown/delta-yokohama-australia/australia-yokohama-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-yokohama-australia/australia-yokohama-unifiedsecurityexposuremanagementusem-release-notes.md",
         "markdown/delta-zurich-australia/australia-zurich-unifiedsecurityexposuremanagement-release-notes.md",
+        "markdown/delta-zurich-australia/australia-zurich-unifiedsecurityexposuremanagementusem-release-notes.md",
         "markdown/release-notes/release-notes/secops-sem-rn.md",
+        "markdown/release-notes/rn-summary-upgrade-info.md",
         "markdown/release-notes/upgrade-and-migration-tasks.md"
       ]
     },
