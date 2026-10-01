@@ -1,8 +1,8 @@
 {
-  "last_checked": "2026-09-01T10:56:55Z",
+  "last_checked": "2026-10-01T12:15:14Z",
   "summary": {
-    "total": 26,
-    "knowledge_article_view_count": 26,
+    "total": 29,
+    "knowledge_article_view_count": 29,
     "other_count": 0
   },
   "links": [
@@ -35,6 +35,17 @@
       ]
     },
     {
+      "url": "https://support.servicenow.com/kb?sys_kb_id=269e049147e5aa503b05ff48436d433c&id=kb_article_view",
+      "title": "Knowledge Article View - Now Support Portal",
+      "status_code": 200,
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/delta-xanadu-australia/australia-xanadu-digitalenduserexperience-release-notes.md",
+        "markdown/delta-yokohama-australia/australia-yokohama-digitalenduserexperience-release-notes.md",
+        "markdown/delta-zurich-australia/australia-zurich-digitalenduserexperience-release-notes.md"
+      ]
+    },
+    {
       "url": "https://support.servicenow.com/kb?sys_kb_id=39f4e5cb47a9f250b6d8aa25126d43a0&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
@@ -62,12 +73,32 @@
       ]
     },
     {
+      "url": "https://support.servicenow.com/kb?sys_kb_id=5165617f970aaa90f03d739c1253af67&id=kb_article_view",
+      "title": "Knowledge Article View - Now Support Portal",
+      "status_code": 200,
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/delta-yokohama-australia/australia-yokohama-digitalenduserexperience-release-notes.md"
+      ]
+    },
+    {
       "url": "https://support.servicenow.com/kb?sys_kb_id=53f0493293922e5cd9743f986cba10a0&id=kb_article_view",
       "title": "Knowledge Article View - Now Support Portal",
       "status_code": 200,
       "category": "knowledge_article_view",
       "found_in": [
         "markdown/environmental-social-governance/usage-of-emission-factors-in-a-calculated-metric-definition.md"
+      ]
+    },
+    {
+      "url": "https://support.servicenow.com/kb?sys_kb_id=57fcf86d97ed6650dfd73dae2153af59&id=kb_article_view",
+      "title": "Knowledge Article View - Now Support Portal",
+      "status_code": 200,
+      "category": "knowledge_article_view",
+      "found_in": [
+        "markdown/delta-xanadu-australia/australia-xanadu-digitalenduserexperience-release-notes.md",
+        "markdown/delta-yokohama-australia/australia-yokohama-digitalenduserexperience-release-notes.md",
+        "markdown/delta-zurich-australia/australia-zurich-digitalenduserexperience-release-notes.md"
       ]
     },
     {
@@ -149,9 +180,8 @@
         "markdown/delta-yokohama-australia/australia-yokohama-unifiedsecurityexposuremanagementusem-release-notes.md",
         "markdown/delta-zurich-australia/australia-zurich-unifiedsecurityexposuremanagement-release-notes.md",
         "markdown/delta-zurich-australia/australia-zurich-unifiedsecurityexposuremanagementusem-release-notes.md",
-        "markdown/release-notes/release-notes/secops-sem-rn.md",
         "markdown/release-notes/rn-summary-upgrade-info.md",
-        "markdown/release-notes/upgrade-and-migration-tasks.md"
+        "markdown/release-notes/secops-sem-rn.md"
       ]
     },
     {
